@@ -92,8 +92,8 @@ to_position, FILE* filename){
     for (int i = 0; i<= party->party_size; i++){
         SET_FOREACH(Member, Iterator, party->party_members){
             if (i == memberGetNumber(Iterator)){
-                if (memberGetGender(Iterator) == MASCULINE) gender_to_print =
-                                                                    MALE;
+                if (memberGetGender(Iterator) == (GenderAux)MASCULINE)
+                    gender_to_print = MALE;
                 else gender_to_print = FEMALE;
                 name_to_print = memberGetName(Iterator);
                 id_to_print = memberGetId(Iterator);
@@ -104,6 +104,7 @@ to_position, FILE* filename){
             }
         }
     }
+    return PARTY_SUCCESS;
 }
 
 PartyResult displayParty(Party party, int from_position, int to_position){
