@@ -10,7 +10,7 @@
 struct member_t {
     char* member_name;
     char* member_id;
-    Gender member_gender;
+    GenderAux member_gender;
     int member_number;
 };
 
@@ -75,7 +75,7 @@ char* memberGetId(Member member){
     return id_copy;
 }
 
-Gender memberGetGender(Member member){
+GenderAux memberGetGender(Member member){
     assert(member);
     return member->member_gender;
 }
@@ -93,6 +93,10 @@ int  memberCompare(Member member_1, Member member_2) {
     else return -1;
 }
 
+void memberChangeNumber(Member member, int number){
+    assert(member);
+    member->member_gender = number;
+}
 
 // 3 Member functions to pass to Member's Set as void*
 int memberCompareShell(void *member_1, void *member_2) {

@@ -6,17 +6,18 @@
 #define PARTIES_member_H
 
 typedef struct member_t* Member;
-typedef enum gender {MASCULINE , FEMININE} Gender;
+typedef enum gender_aux {MASCULINE , FEMININE} GenderAux;
 
 Member memberCreate(const char* name, const char* id, char gender,
         int number);
 void memberDestroy(Member member);
 char* memberGetName(Member member);
 char* memberGetId(Member member);
-Gender memberGetGender(Member member);
+GenderAux memberGetGender(Member member);
 int memberGetNumber(Member member);
 Member memberCopy(Member copied_member);
 int  memberCompare(Member member_1, Member member_2);
+void memberChangeNumber(Member member, int number);
 
 // 3 member functions to pass to member's Set as void*
 int memberCompareShell(void *member_1, void *member_2);

@@ -7,9 +7,6 @@ int main() {
     printf("Hello, World!\n");
     Member member1 = memberCreate("yossi", "234567892", 'M', 2);
     Member member2 = memberCopy(member1);
-    Set set = setCreate(memberCopyShell, memberDestroyShell,
-            memberCompareShell);
-    setDestroy(set);
     int i = memberCompare(member1, member2);
     printf("%d\n", i);
     memberDestroy(member1);
