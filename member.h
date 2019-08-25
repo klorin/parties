@@ -6,7 +6,7 @@
 #define PARTIES_member_H
 
 typedef struct member_t* Member;
-typedef enum gender_aux {MASCULINE , FEMININE} GenderAux;
+typedef enum gender_aux {MASCULINE_AUX , FEMININE_AUX} GenderAux;
 
 Member memberCreate(const char* name, const char* id, char gender,
         int number);

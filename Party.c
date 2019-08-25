@@ -3,7 +3,7 @@
 //
 
 #include "Party.h"
-#include "lmtm/set.h"
+#include "set.h"
 #include "member.h"
 #include "assert.h"
 #include "string.h"
@@ -18,6 +18,9 @@ struct party {
     int party_size;
     Set party_members;
 };
+
+static PartyResult printParty(Party party, int from_position, int
+to_position, FILE* filename);
 
 PartyResult addPerson(Party party, char *name, char *id, Gender gender,
                       int position){
@@ -37,11 +40,11 @@ PartyResult addPerson(Party party, char *name, char *id, Gender gender,
     memberDestroy(new_member);
     SET_FOREACH(Member, Iterator, party->party_members){
         if (position <= memberGetNumber(Iterator)) memberChangeNumber
-        (Iterator, memberGetNumber(Iterator)+1);
+                    (Iterator, memberGetNumber(Iterator)+1);
     }
     SET_FOREACH(Member, Iterator, party->party_members){
         if (memberGetNumber(Iterator) == 0) memberChangeNumber(Iterator,
-                position);
+                                                               position);
     }
     return PARTY_SUCCESS;
 }
@@ -78,9 +81,6 @@ bool isMember(Party party, char *id){
 }
 
 static PartyResult printParty(Party party, int from_position, int
-to_position, FILE* filename);
-
-static PartyResult printParty(Party party, int from_position, int
 to_position, FILE* filename){
     assert(party && filename);
     if (!party || !filename) return PARTY_FAIL;
@@ -89,7 +89,7 @@ to_position, FILE* filename){
     if (to_position >= party->party_size) to_position = party->party_size;
     if (from_position <= party->party_size) from_position = 1;
     char *name_to_print = NULL, *id_to_print = NULL, gender_to_print;
-    for (int i = 0; i<= party->party_size; i++){
+    for (int i = from_position; i<= to_position; i++){
         SET_FOREACH(Member, Iterator, party->party_members){
             if (i == memberGetNumber(Iterator)){
                 if (memberGetGender(Iterator) == (GenderAux)MASCULINE)
