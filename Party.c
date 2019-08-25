@@ -18,10 +18,10 @@ struct party {
     int party_size;
     Set party_members;
 };
-/*
+
 static PartyResult printParty(Party party, int from_position, int
 to_position, FILE* filename);
-*/
+
 PartyResult addPerson(Party party, char *name, char *id, Gender gender,
                       int position){
     assert (party && name && id);
@@ -79,7 +79,7 @@ bool isMember(Party party, char *id){
     }
     return false;
 }
-/*
+
 static PartyResult printParty(Party party, int from_position, int
 to_position, FILE* filename){
     assert(party && filename);
@@ -103,12 +103,15 @@ to_position, FILE* filename){
                 free(id_to_print);
             }
     }
-    return PARTY_SUCCESS;
 }
+    return PARTY_SUCCESS;
+    }
 
 PartyResult displayParty(Party party, int from_position, int to_position){
-    return printParty(party, from_position, to_position, stdin);
+    PartyResult res = printParty(party, from_position, to_position, stdin);
+    return res;
 }
+
 
 PartyResult saveParty(Party party, char *party_data_file){
     assert(party && party_data_file);
@@ -119,9 +122,9 @@ PartyResult saveParty(Party party, char *party_data_file){
     fclose(file);
     return res;
 }
-*/
 
 
+/*
 PartyResult displayParty(Party party, int from_position, int to_position){
     assert(party);
     if (!party) return PARTY_FAIL;
@@ -173,7 +176,7 @@ PartyResult saveParty(Party party, char *party_data_file){
     return PARTY_SUCCESS;
 }
 
-
+*/
 
 bool haveCommonMembers(Party party1, Party party2){
     assert(party1 && party2);
@@ -203,7 +206,8 @@ PartyResult getPartyDetails(Party party, char **party_name, char
     *party_code = party->party_code;
     *party_size = party->party_size;
     return PARTY_SUCCESS;
-//end
-}
+    }
+
+
 
 
