@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "member.h"
 #include <stdlib.h>
-#include "lmtm/set.h"
+#include "set.h"
 
 int main() {
     printf("Hello, World!\n");
